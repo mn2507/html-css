@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against index.html",
+            "file": "${workspaceFolder}/index.html",
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": [
+                "--new-window",
+                "--incognito",
+                "--disable-extensions"
+            ],
+            "userDataDir": "${workspaceFolder}/.vscode/chrome"
+        }
+    ]
+}

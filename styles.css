@@ -1,0 +1,201 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --white-color: #ffffff;
+    --border-radius: 5px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --nav-height: 80px; /* Adjust the height of the navbar */
+    --nav-font-weight: 700; /* Adjust the font weight of the navbar items */
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--white-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: var(--nav-height); /* Use the variable for the height */
+    display: flex;
+    align-items: center;
+}
+
+#nav-bar {
+    width: 100%;
+}
+
+#nav-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center items vertically */
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Make the ul take the full height of the navbar */
+}
+
+#nav-bar ul li {
+    margin: 0 20px;
+}
+
+#nav-bar ul li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: var(--nav-font-weight); /* Use the variable for font weight */
+    font-size: 1.1rem; /* Increase the font size */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: var(--border-radius); /* Add some border radius for smoother look */
+}
+
+#nav-bar ul li a:hover {
+    color: var(--white-color);
+    background-color: var(--secondary-color); /* Add background color on hover */
+}
+
+#welcome-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('images/background.jpg') no-repeat center center/cover;
+    color: var(--white-color);
+    text-align: center;
+    padding-top: var(--nav-height); /* Ensure content doesn't hide behind the navbar */
+}
+
+section {
+    padding: 60px 20px;
+}
+
+h1, h2 {
+    margin: 0 0 20px;
+    color: var(--primary-color);
+}
+
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contact-form label {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    #nav-bar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #nav-bar ul li {
+        margin: 10px 0;
+    }
+
+    .carousel-btn {
+        padding: 5px;
+    }
+}
