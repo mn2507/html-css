@@ -19,12 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarousel();
     });
 
-    $('[data-fancybox="gallery"]').fancybox({
-        buttons: [
-            "zoom",
-            "slideShow",
-            "thumbs",
-            "close"
-        ]
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Toolbar: {
+            display: [
+                "close",
+            ],
+        },
+        loop: true,
+        transitionEffect: "slide",
+        protect: true,
+        afterClose: function(instance, slide) {
+            $('body').focus();
+        }
+    });
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileMenu.classList.toggle('is-active');
     });
 });

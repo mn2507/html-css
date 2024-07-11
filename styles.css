@@ -4,18 +4,27 @@
     --background-color: #ecf0f1;
     --text-color: #2c3e50;
     --white-color: #ffffff;
+    --yellow-color: #fff200;
     --border-radius: 5px;
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --nav-height: 80px; /* Adjust the height of the navbar */
-    --nav-font-weight: 700; /* Adjust the font weight of the navbar items */
+    --nav-height: 80px;
+    --nav-font-weight: 700;
 }
 
 body {
     font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    background-color: var(--background-color);
     color: var(--text-color);
+    background: linear-gradient(90deg, #a8dcff, #fa8fdc, #fffecb);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 #header {
@@ -25,42 +34,58 @@ body {
     background-color: var(--white-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    height: var(--nav-height); /* Use the variable for the height */
+    height: var(--nav-height);
     display: flex;
     align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 #nav-bar {
     width: 100%;
 }
 
-#nav-bar ul {
+.nav-links {
     list-style: none;
     display: flex;
     justify-content: center;
-    align-items: center; /* Center items vertically */
+    align-items: center;
     margin: 0;
     padding: 0;
-    height: 100%; /* Make the ul take the full height of the navbar */
+    height: 100%;
 }
 
-#nav-bar ul li {
+.nav-links li {
     margin: 0 20px;
 }
 
-#nav-bar ul li a {
+.nav-links li a {
     color: var(--primary-color);
     text-decoration: none;
     padding: 10px 15px;
-    font-weight: var(--nav-font-weight); /* Use the variable for font weight */
-    font-size: 1.1rem; /* Increase the font size */
+    font-weight: var(--nav-font-weight);
+    font-size: 1.1rem;
     transition: color 0.3s ease, background-color 0.3s ease;
-    border-radius: var(--border-radius); /* Add some border radius for smoother look */
+    border-radius: var(--border-radius);
 }
 
-#nav-bar ul li a:hover {
+.nav-links li a:hover {
     color: var(--white-color);
-    background-color: var(--secondary-color); /* Add background color on hover */
+    background-color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: var(--primary-color);
+    margin: 4px 0;
+    transition: 0.3s;
 }
 
 #welcome-section {
@@ -69,9 +94,22 @@ body {
     align-items: center;
     height: 100vh;
     background: url('images/background.jpg') no-repeat center center/cover;
-    color: var(--white-color);
     text-align: center;
-    padding-top: var(--nav-height); /* Ensure content doesn't hide behind the navbar */
+    padding-top: var(--nav-height);
+    position: relative;
+    z-index: 0;
+    animation: fadeIn 2s ease-in;
+}
+
+#welcome-section h1 {
+    color: var(--yellow-color);
+    font-size: 6rem;
+    font-weight: var(--nav-font-weight);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 section {
@@ -90,6 +128,12 @@ h1, h2 {
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .carousel-container {
@@ -186,16 +230,40 @@ h1, h2 {
 }
 
 @media (max-width: 768px) {
-    #nav-bar ul {
+    #header {
+        height: auto;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        width: 100%;
     }
 
-    #nav-bar ul li {
-        margin: 10px 0;
+    .nav-links li {
+        width: 100%;
+        text-align: center;
     }
 
-    .carousel-btn {
-        padding: 5px;
+    .nav-links li a {
+        padding: 10px 20px;
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    #welcome-section {
+        padding-top: calc(var(--nav-height) + 10px);
+    }
+
+    #welcome-section h1 {
+        font-size: 2.5rem;
     }
 }
